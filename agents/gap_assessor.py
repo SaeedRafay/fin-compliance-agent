@@ -10,8 +10,8 @@ from typing import List, Optional
 from anthropic import Anthropic
 from agents.demo_data import DEMO_COMPLIANCE_GAPS
 
-SYSTEM_PROMPT = """You are a regulatory compliance transformation lead at a 
-Big-4 consulting firm specialising in financial services. Your role is to 
+SYSTEM_PROMPT = """You are a regulatory compliance transformation lead at a
+Big-4 consulting firm specialising in financial services. Your role is to
 identify compliance gaps and produce a prioritised remediation roadmap.
 
 Given institution profile, regulatory requirements, and risk scores, return JSON:

@@ -1,6 +1,6 @@
 """
 ReportWriterAgent
-Synthesises all upstream agent outputs into a polished executive 
+Synthesises all upstream agent outputs into a polished executive
 compliance brief suitable for Board, CRO, or regulator presentation.
 """
 
@@ -10,7 +10,7 @@ from typing import List, Optional
 from anthropic import Anthropic
 from agents.demo_data import DEMO_FINAL_REPORT
 
-SYSTEM_PROMPT = """You are a Chief Compliance Officer drafting an executive-level 
+SYSTEM_PROMPT = """You are a Chief Compliance Officer drafting an executive-level
 regulatory compliance brief for Board presentation at a European bank.
 
 Write a clear, structured, professional compliance brief in Markdown format.

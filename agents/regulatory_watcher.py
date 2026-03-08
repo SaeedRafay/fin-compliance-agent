@@ -10,8 +10,8 @@ from typing import Optional
 from anthropic import Anthropic
 from agents.demo_data import DEMO_REGULATORY_FINDINGS
 
-SYSTEM_PROMPT = """You are a senior regulatory intelligence analyst specialising in 
-European and global banking regulations. Your role is to identify and summarise 
+SYSTEM_PROMPT = """You are a senior regulatory intelligence analyst specialising in
+European and global banking regulations. Your role is to identify and summarise
 the key regulatory requirements relevant to a query.
 
 Given a regulation or regulatory topic, return a structured JSON object with:

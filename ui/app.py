@@ -3,7 +3,6 @@ FinComplianceAgent — Streamlit Demo UI
 A polished banking-grade interface for running multi-agent compliance analysis.
 """
 
-import json
 import os
 import sys
 import uuid
@@ -21,7 +20,7 @@ _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
-import streamlit as st
+import streamlit as st  # noqa: E402
 
 # ── Page Config ───────────────────────────────────────────────────────────────
 
@@ -125,8 +124,7 @@ st.markdown(
     "RegTech Demo by [Saeed Rafay](https://saeedrafay.com)"
 )
 
-import os as _os
-if _os.environ.get("DEMO_MODE", "").lower() in ("1", "true", "yes"):
+if os.environ.get("DEMO_MODE", "").lower() in ("1", "true", "yes"):
     st.warning(
         "⚠️ **DEMO MODE** — Running with pre-built mock data. No Anthropic API calls are made. "
         "Set `DEMO_MODE=false` and add a valid `ANTHROPIC_API_KEY` to use live AI analysis.",
@@ -294,16 +292,16 @@ else:
 
     st.markdown("""
     ### How it works
-    
+
     This system uses **LangGraph** to orchestrate a pipeline of 4 specialised AI agents:
-    
+
     | Agent | Role | Output |
     |-------|------|--------|
     | 🔍 Regulatory Watcher | Parses regulatory requirements for your query & jurisdiction | Structured requirements JSON |
     | 📊 Risk Analyzer | Scores institutional risk across compliance dimensions | Risk scorecard (1–10 per dimension) |
     | 🕵️ Gap Assessor | Identifies gaps between current state and requirements | Prioritised gap register |
     | 📝 Report Writer | Synthesises all findings into an executive brief | Board-ready Markdown report |
-    
+
     ### Supported Regulations
     - **DORA** — Digital Operational Resilience Act (EU)
     - **Basel IV** — Capital adequacy framework

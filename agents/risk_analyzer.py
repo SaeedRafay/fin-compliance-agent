@@ -10,8 +10,8 @@ from typing import List, Optional
 from anthropic import Anthropic
 from agents.demo_data import DEMO_RISK_SCORES
 
-SYSTEM_PROMPT = """You are a chief risk officer and regulatory risk specialist at a 
-Tier-1 European bank. Your role is to score an institution's inherent risk exposure 
+SYSTEM_PROMPT = """You are a chief risk officer and regulatory risk specialist at a
+Tier-1 European bank. Your role is to score an institution's inherent risk exposure
 across regulatory compliance dimensions.
 
 Given an institution profile and regulatory requirements, return a structured JSON:
