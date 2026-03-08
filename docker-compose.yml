@@ -1,0 +1,41 @@
+services:
+  fin-compliance-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: fin-compliance-agent:latest
+    container_name: fin-compliance-agent
+    ports:
+      - "8501:8501"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - DEMO_MODE=${DEMO_MODE:-true}
+    volumes:
+      - ./outputs:/app/outputs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "from graph.compliance_graph import build_compliance_graph; build_compliance_graph()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Optional: CLI runner for batch analysis
+  fin-compliance-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: fin-compliance-agent:latest
+    container_name: fin-compliance-cli
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - DEMO_MODE=${DEMO_MODE:-true}
+    volumes:
+      - ./outputs:/app/outputs
+    command: >
+      python main.py
+      --demo
+      --output /app/outputs/demo_report.md
+    profiles:
+      - cli
